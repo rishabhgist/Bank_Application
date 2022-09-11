@@ -11,10 +11,10 @@ import java.util.Map;
 @Data
 public class Login {
     private final String FILE_PATH = "src/main/resources/userdata.csv";
+    UserValidate userValidate;
     private String username;
     private String password;
     private String role;
-    UserValidate userValidate;
 
     public boolean validateUser(String username, String password) {
         return username.equals(this.username) && password.equals(this.password);
@@ -28,10 +28,13 @@ public class Login {
             String line;
             int count = 0;
             while ((line = reader.readLine()) != null) {
-                String[] userPass = line.split(",");
-                userValidate.setUsername();
+                try {
+                    String[] users = line.split(",");
+                    usernamePassword.put(users[0].trim(), users[1].trim());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
