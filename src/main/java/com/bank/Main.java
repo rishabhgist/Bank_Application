@@ -2,6 +2,7 @@ package com.bank;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Login login = new Login();
+        System.out.println(login.getUsernamePassword());
     }
 }
