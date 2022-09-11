@@ -17,7 +17,13 @@ public class Login {
     private String role;
 
     public boolean validateUser(String username, String password) {
-        return username.equals(this.username) && password.equals(this.password);
+        Map<String, String> users = getUsernamePassword();
+        for (Map.Entry<String, String> user : users.entrySet()) {
+            if (username.equals(user.getKey()) && password.equals(user.getValue())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Map<String, String> getUsernamePassword() {
