@@ -12,19 +12,20 @@ import java.util.Map;
 public class Login {
     private final String FILE_PATH = "src/main/resources/userdata.csv";
     UserValidate userValidate;
+    Account account;
     private String username;
     private String password;
     private String role;
 
-    public boolean validateUser(String username, String password) {
+    public void validateUser(String username, String password) {
         Map<String, String> users = getUsernamePassword();
         for (Map.Entry<String, String> user : users.entrySet()) {
             if (username.equals(user.getKey()) && password.equals(user.getValue())) {
-                return true;
+                account = new Account(true, 50000.00);
+                account.displayInfo();
             }
         }
         System.err.println("Account not found");
-        return false;
     }
 
     public Map<String, String> getUsernamePassword() {
