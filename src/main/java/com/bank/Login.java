@@ -23,6 +23,7 @@ public class Login {
                 return true;
             }
         }
+        System.err.println("Account not found");
         return false;
     }
 
@@ -32,7 +33,6 @@ public class Login {
             BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
             String header = reader.readLine();
             String line;
-            int count = 0;
             while ((line = reader.readLine()) != null) {
                 try {
                     String[] users = line.split(",");
@@ -41,6 +41,7 @@ public class Login {
                     System.out.println(e.getMessage());
                 }
             }
+            reader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
