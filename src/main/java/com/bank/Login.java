@@ -14,6 +14,7 @@ public class Login {
     private String username;
     private String password;
     private String role;
+    UserValidate userValidate;
 
     public boolean validateUser(String username, String password) {
         return username.equals(this.username) && password.equals(this.password);
@@ -25,12 +26,12 @@ public class Login {
             BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
             String header = reader.readLine();
             String line;
-            String[] userPass = new String[1];
             int count = 0;
             while ((line = reader.readLine()) != null) {
-                userPass = line.split(",");
+                String[] userPass = line.split(",");
+                userValidate.setUsername();
             }
-            usernamePassword.put(userPass[0], userPass[1]);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
