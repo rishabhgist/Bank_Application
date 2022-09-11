@@ -2,6 +2,9 @@ package com.bank;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class Login {
     private String username;
@@ -9,9 +12,11 @@ public class Login {
     private String role;
 
     public boolean validateUser(String username, String password) {
-        if (username.equals(this.username) && password.equals(this.password)) {
-            return true;
-        }
-        return false;
+        return username.equals(this.username) && password.equals(this.password);
+    }
+
+    public List<String> getUsernamePassword() {
+        List<String> usernamePassword = new ArrayList<>();
+
     }
 }
