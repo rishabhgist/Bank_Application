@@ -13,10 +13,6 @@ public class Login {
     private final String FILE_PATH = "src/main/resources/userdata.csv";
     UserValidate userValidate;
     Account account;
-    private String username;
-    private String password;
-    private String role;
-
     public void validateUser(String username, String password) {
         Map<String, String> users = getUsernamePassword();
         for (Map.Entry<String, String> user : users.entrySet()) {
@@ -25,7 +21,6 @@ public class Login {
                 account.displayInfo();
             }
         }
-        System.err.println("Account not found");
     }
 
     public Map<String, String> getUsernamePassword() {
